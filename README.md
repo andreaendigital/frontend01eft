@@ -121,6 +121,12 @@ La confirmación se muestra después de completar correctamente el formulario. E
 
 Cuando la búsqueda o el filtro por categoría no encuentra videojuegos, la aplicación informa al usuario que no existen productos coincidentes.
 
+### Filtro por categoría
+
+![Despliegue del filtro por categorías](./src/assets/img/desplieguecategorias.png)
+
+La imagen muestra el menú desplegable utilizado para filtrar los videojuegos por plataforma.
+
 ### Diseño y maquetación
 
 La interfaz utiliza:
@@ -229,6 +235,54 @@ http://localhost:4173/
 ```
 
 Abre esa dirección en el navegador para revisar la versión compilada.
+
+## Rutas locales y despliegue en GitHub Pages
+
+La configuración actual de Vite no define una ruta base personalizada, por lo que el proyecto se ejecuta localmente desde la raíz:
+
+```text
+http://localhost:5173/
+```
+
+La carpeta física del proyecto no determina por sí sola la URL. La propiedad `base` de [`vite.config.js`](./vite.config.js) define la ruta pública que Vite utilizará para cargar los recursos.
+
+### Publicación en un repositorio de GitHub
+
+GitHub Pages normalmente publica el sitio dentro de una subruta con el nombre del repositorio. Por ejemplo, si el repositorio se llama `pixel-arcade`, la configuración de Vite debe ser:
+
+```js
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+export default defineConfig({
+  base: "/pixel-arcade/",
+  plugins: [react()],
+});
+```
+
+En ese caso, la URL de GitHub Pages sería similar a:
+
+```text
+https://tu-usuario.github.io/pixel-arcade/
+```
+
+El nombre `pixel-arcade` debe reemplazarse por el nombre real del repositorio. Después de cambiar `base`, se debe ejecutar nuevamente `npm run build` antes de publicar.
+
+### Publicación en la raíz de un dominio
+
+Si GitHub Pages está configurado para un sitio de usuario u organización, o se utiliza un dominio personalizado en la raíz, se puede mantener:
+
+```js
+base: "/"
+```
+
+o dejar la propiedad `base` sin definir, como está actualmente. En ese escenario la URL puede ser:
+
+```text
+https://tu-usuario.github.io/
+```
+
+Por lo tanto, cambiar `base` a la raíz permite ejecutar correctamente el proyecto en local, pero **no hace que se publique automáticamente en la raíz de GitHub Pages**. La ruta final depende de si GitHub Pages utiliza un repositorio de proyecto, un sitio de usuario/organización o un dominio personalizado.
 
 ## Estructura principal
 
