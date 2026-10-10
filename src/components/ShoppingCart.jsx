@@ -1,6 +1,5 @@
 import { useState } from "react";
 import CartTotal from "./CartTotal";
-import Counter from "./Counter";
 import ProductList from "./ProductList";
 import UserStatus from "./UserStatus";
 

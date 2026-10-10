@@ -7,6 +7,7 @@ Pixel Arcade es una tienda web de videojuegos desarrollada como resultado de la 
 Durante el bimestre se trabajó con:
 
 - Componentes reutilizables en React.
+- Separación de la interfaz en componentes `Navbar`, `HeroCarousel`, `ContactForm` y `Footer`.
 - Props para comunicar información y eventos entre componentes.
 - `useState` para administrar estados de la interfaz.
 - `useEffect` para trabajar con efectos de la aplicación.
@@ -86,6 +87,19 @@ Incluye:
 - Envío simulado sin backend.
 
 El uso de `event.preventDefault()` permite que React controle la validación y la simulación del envío sin recargar la página.
+
+### Modularidad de la interfaz
+
+La estructura de la interfaz se divide en componentes reutilizables:
+
+- [`Navbar.jsx`](./src/components/Navbar.jsx): navegación principal y contador del carrito mediante props.
+- [`HeroCarousel.jsx`](./src/components/HeroCarousel.jsx): carrusel promocional independiente.
+- [`ShoppingCart.jsx`](./src/components/ShoppingCart.jsx): búsqueda, filtro, tarjetas y carrito.
+- [`ContactForm.jsx`](./src/components/ContactForm.jsx): formulario con estado y validaciones.
+- [`Footer.jsx`](./src/components/Footer.jsx): pie de página reutilizable.
+- [`App.jsx`](./src/App.jsx): composición general y estado del contador del carrito.
+
+Esta separación mantiene en `App.jsx` únicamente la composición de la página y la comunicación entre las secciones principales, facilitando el mantenimiento y la reutilización.
 
 ## Evidencias de funcionalidades
 
@@ -309,6 +323,9 @@ sem09ETF/
 │       ├── CartTotal.jsx
 │       ├── ContactForm.jsx
 │       ├── Counter.jsx
+│       ├── Footer.jsx
+│       ├── HeroCarousel.jsx
+│       ├── Navbar.jsx
 │       ├── ProductList.jsx
 │       ├── ShoppingCart.jsx
 │       └── UserStatus.jsx
