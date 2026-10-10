@@ -6,12 +6,12 @@ import UserStatus from "./UserStatus";
 
 function ShoppingCart({
   products,
-  loadingProducts,
-  productsError,
   onCountChange,
 }) {
   const [cart, setCart] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("Todas");
+  const categories = [...new Set(products.map((product) => product.category))];
 
   const addToCart = (product) => {
     const uniqueId = `${product.id}-${Date.now()}-${Math.random()}`;
@@ -43,7 +43,7 @@ function ShoppingCart({
           role="search"
           onSubmit={(event) => event.preventDefault()}
         >
-          <div className="col-12 col-md-9">
+          <div className="col-12 col-md-6">
             <label className="visually-hidden" htmlFor="searchInput">
               Buscar productos
             </label>
@@ -61,20 +61,33 @@ function ShoppingCart({
               Buscar productos
             </button>
           </div>
+          <div className="col-12 col-md-3">
+            <label className="visually-hidden" htmlFor="categorySelect">
+              Filtrar por categoría
+            </label>
+            <select
+              id="categorySelect"
+              className="form-select"
+              value={selectedCategory}
+              onChange={(event) => setSelectedCategory(event.target.value)}
+            >
+              <option value="Todas">Todas las categorías</option>
+              {categories.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+          </div>
         </form>
-        <UserStatus
-          count={products.length}
-          loading={loadingProducts}
-          error={productsError}
+        <UserStatus count={products.length} />
+        <ProductList
+          products={products}
+          cart={cart}
+          onAddToCart={addToCart}
+          searchTerm={searchTerm}
+          selectedCategory={selectedCategory}
         />
-        {!loadingProducts && !productsError && (
-          <ProductList
-            products={products}
-            cart={cart}
-            onAddToCart={addToCart}
-            searchTerm={searchTerm}
-          />
-        )}
       </section>
 
       <aside
@@ -105,7 +118,9 @@ function ShoppingCart({
                 <div>
                   <strong>{product.name}</strong>
                   <small className="d-block text-secondary">
-                    {product.offerPrice.toLocaleString("es-CL")} CLP
+                    {product.price === null
+                      ? "Precio no disponible"
+                      : `$${product.price.toLocaleString("es-CL")}`}
                   </small>
                 </div>
                 <button

@@ -1,27 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ShoppingCart from "./components/ShoppingCart";
 import Counter from "./components/Counter";
+import { products as catalog } from "./assets/products";
 import "./App.css";
 
 function App() {
-  const [products, setProducts] = useState([]);
-  const [loadingProducts, setLoadingProducts] = useState(true);
-  const [productsError, setProductsError] = useState(false);
   const [cartCount, setCartCount] = useState(0);
-
-  useEffect(() => {
-    fetch(`${import.meta.env.BASE_URL}products.json`)
-      .then((response) => {
-        if (!response.ok) throw new Error(`Error ${response.status}`);
-        return response.json();
-      })
-      .then((data) => setProducts(data))
-      .catch((error) => {
-        setProductsError(true);
-        console.error("No se pudo cargar el catálogo", error);
-      })
-      .finally(() => setLoadingProducts(false));
-  }, []);
 
   return (
     <div className="d-flex flex-column min-vh-100">
@@ -116,9 +100,7 @@ function App() {
         </section>
 
         <ShoppingCart
-          products={products}
-          loadingProducts={loadingProducts}
-          productsError={productsError}
+          products={catalog}
           onCountChange={setCartCount}
         />
 

@@ -6,7 +6,10 @@ const formatPrice = (price) =>
   }).format(price);
 
 function CartTotal({ cart }) {
-  const total = cart.reduce((sum, product) => sum + product.offerPrice, 0);
+  const total = cart.reduce(
+    (sum, product) => sum + (product.price ?? 0),
+    0,
+  );
 
   return (
     <div className="cart-total mt-4 pt-3 border-top d-flex justify-content-between">

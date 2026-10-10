@@ -1,63 +1,102 @@
+import aloneInTheDarkImage from "./img/aloneinthedark.png";
+import astroBotImage from "./img/astrobot.png";
+import cristalesImage from "./img/cristales.png";
+import plantsVsZombiesImage from "./img/plantszombiesgardenwarfare.png";
+import kinectAdventuresImage from "./img/kinectadventures.png";
+import assassinsCreedImage from "./img/assasinscreediv.png";
+import donkeyKongImage from "./img/bonanza.png";
+import metroidImage from "./img/metroid.png";
+import pokemonImage from "./img/pokemonpokopia.png";
+
 export const products = [
   {
     id: 1,
-    name: "Gamepad Pro Wireless",
+    name: "Alone in the Dark",
+    image: aloneInTheDarkImage,
+    alt: "Portada de Alone in the Dark",
+    category: "PlayStation 5",
     description:
-      "Control ergonómico de alta precisión compatible con PC y consolas.",
-    image: "https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?w=600",
-    alt: "Control inalámbrico profesional blanco",
-    price: 49990,
-    offerPrice: 44990,
+      "Aventura de terror y supervivencia ambientada en una misteriosa mansión.",
+    price: 59.9,
   },
   {
     id: 2,
-    name: "Auriculares Gamer 7.1",
+    name: "Astro Bot",
+    image: astroBotImage,
+    alt: "Portada de Astro Bot",
+    category: "PlayStation 5",
     description:
-      "Sonido envolvente y micrófono con cancelación de ruido para cada partida.",
-    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
-    alt: "Auriculares gamer con iluminación LED",
-    price: 39990,
-    offerPrice: 35990,
+      "Plataformas y exploración llenas de creatividad protagonizadas por Astro.",
+    price: 59.9,
   },
   {
     id: 3,
-    name: "Consola Retro Classic",
+    name: "Cristales",
+    image: cristalesImage,
+    alt: "Portada de Cristales",
+    category: "PlayStation 5",
     description:
-      "Revive más de 500 títulos clásicos con salida HDMI y mandos incluidos.",
-    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-    alt: "Consola retro con mandos clásicos",
-    price: 59990,
-    offerPrice: 53990,
+      "RPG de aventura con combates estratégicos y un mundo fantástico por descubrir.",
+    price: 39.9,
   },
   {
     id: 4,
-    name: "Notebook Gamer Ultra",
+    name: "Plantas vs. Zombies: Garden Warfare",
+    image: plantsVsZombiesImage,
+    alt: "Portada de Plantas vs. Zombies: Garden Warfare",
+    category: "Xbox 360",
     description:
-      "Potencia gráfica de última generación para juegos exigentes y multitarea fluida.",
-    image: "https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?w=600",
-    alt: "Notebook gamer de alto rendimiento",
-    price: 899990,
-    offerPrice: 799990,
+      "Batallas multijugador en tercera persona entre plantas y zombis.",
+    price: null,
   },
   {
     id: 5,
-    name: "Mouse Ergonómico Pro",
+    name: "Kinect Adventures",
+    image: kinectAdventuresImage,
+    alt: "Portada de Kinect Adventures",
+    category: "Xbox 360",
     description:
-      "Diseño optimizado para largas sesiones de juego y sensor óptico de alta precisión.",
-    image: "https://images.unsplash.com/photo-1727417453138-7d8efdd70fb3?w=600",
-    alt: "Mouse ergonómico gamer inalámbrico",
-    price: 29990,
-    offerPrice: 24990,
+      "Colección de aventuras y desafíos interactivos para disfrutar con Kinect.",
+    price: null,
   },
   {
     id: 6,
-    name: "Setup Battlestation Complete",
+    name: "Assassin's Creed IV",
+    image: assassinsCreedImage,
+    alt: "Portada de Assassin's Creed IV",
+    category: "Xbox 360",
     description:
-      "Estación completa para trabajo y streaming con periféricos integrados e iluminación RGB.",
-    image:
-      "https://plus.unsplash.com/premium_photo-1682141878168-5dace8e1785d?w=600",
-    alt: "Setup gamer completo con monitor e iluminación",
-    price: 1299990,
-    offerPrice: 1149990,
+      "Conviértete en un pirata y explora el Caribe durante la edad de oro.",
+    price: null,
+  },
+  {
+    id: 7,
+    name: "Donkey Kong Bananza Nintendo Switch 2",
+    image: donkeyKongImage,
+    alt: "Portada de Donkey Kong Bananza",
+    category: "Switch 2",
+    description:
+      "Aventura de plataformas con Donkey Kong y escenarios llenos de acción.",
+    price: 79990,
+  },
+  {
+    id: 8,
+    name: "Metroid Prime 4: Beyond Nintendo Switch 2",
+    image: metroidImage,
+    alt: "Portada de Metroid Prime 4: Beyond",
+    category: "Switch 2",
+    description:
+      "Explora planetas desconocidos y enfréntate a amenazas en una aventura galáctica.",
+    price: 69990,
+  },
+  {
+    id: 9,
+    name: "Pokémon Pokopia Nintendo Switch 2",
+    image: pokemonImage,
+    alt: "Portada de Pokémon Pokopia",
+    category: "Switch 2",
+    description:
+      "Construye, explora y comparte una aventura llena de Pokémon.",
+    price: 74990,
   },
 ];
