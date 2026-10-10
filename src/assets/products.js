@@ -17,7 +17,7 @@ export const products = [
     category: "PlayStation 5",
     description:
       "Aventura de terror y supervivencia ambientada en una misteriosa mansión.",
-    price: 59.9,
+    price: 59.99,
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ export const products = [
     category: "PlayStation 5",
     description:
       "Plataformas y exploración llenas de creatividad protagonizadas por Astro.",
-    price: 59.9,
+    price: 59.99,
   },
   {
     id: 3,
@@ -37,7 +37,7 @@ export const products = [
     category: "PlayStation 5",
     description:
       "RPG de aventura con combates estratégicos y un mundo fantástico por descubrir.",
-    price: 39.9,
+    price: 39.99,
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ export const products = [
     category: "Xbox 360",
     description:
       "Batallas multijugador en tercera persona entre plantas y zombis.",
-    price: null,
+    price: 29000,
   },
   {
     id: 5,
@@ -57,7 +57,7 @@ export const products = [
     category: "Xbox 360",
     description:
       "Colección de aventuras y desafíos interactivos para disfrutar con Kinect.",
-    price: null,
+    price: 25000,
   },
   {
     id: 6,
@@ -67,7 +67,7 @@ export const products = [
     category: "Xbox 360",
     description:
       "Conviértete en un pirata y explora el Caribe durante la edad de oro.",
-    price: null,
+    price: 29300,
   },
   {
     id: 7,
@@ -95,8 +95,7 @@ export const products = [
     image: pokemonImage,
     alt: "Portada de Pokémon Pokopia",
     category: "Switch 2",
-    description:
-      "Construye, explora y comparte una aventura llena de Pokémon.",
+    description: "Construye, explora y comparte una aventura llena de Pokémon.",
     price: 74990,
   },
 ];
