@@ -7,7 +7,7 @@ function Navbar({ cartCount }) {
         className="navbar navbar-expand-lg navbar-dark arcade-navbar"
         aria-label="Navegación principal"
       >
-        <div className="container">
+        <div className="container-fluid container-lg">
           <a
             className="navbar-brand d-flex align-items-center gap-2 fw-bold"
             href="#inicio"

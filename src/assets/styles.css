@@ -55,8 +55,8 @@ body {
 }
 
 .arcade-navbar .container {
-  padding-right: 27px;
-  padding-left: 27px;
+  padding-right: 1rem;
+  padding-left: 1rem;
 }
 
 .arcade-navbar .navbar-brand,
@@ -141,6 +141,7 @@ body {
 
 .product-card .card-title {
   color: #ffffff;
+  overflow-wrap: anywhere;
 }
 
 .product-card .card-text,
@@ -315,30 +316,44 @@ body {
   border-bottom: 1px solid rgba(196, 202, 212, 0.2);
 }
 
+.cart-item strong {
+  overflow-wrap: anywhere;
+}
+
+.min-width-0 {
+  min-width: 0;
+}
+
 .product-price {
   color: var(--arcade-highlight);
 }
 
-/* Adaptación del carrusel y captions para pantallas pequeñas */
+/* Adaptación de la interfaz para pantallas pequeñas */
 @media (max-width: 767.98px) {
+  .container {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  .arcade-navbar .navbar-brand {
+    font-size: 1rem;
+  }
+
   .carousel-image {
-    height: 360px;
+    height: clamp(210px, 58vw, 360px);
   }
 
-  .carousel-caption {
-    right: 7%;
-    bottom: 8%;
-    left: 7%;
-    padding: 0.9rem;
+  .contact-section,
+  .cart-section {
+    padding: 1rem;
   }
 
-  .carousel-caption h1,
-  .carousel-caption h2 {
-    font-size: 1.45rem;
+  .product-card .card-img-top {
+    height: 220px;
   }
 
-  .carousel-caption p {
-    font-size: 0.9rem;
+  .cart-item .btn {
+    flex-shrink: 0;
   }
 }
 

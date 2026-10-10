@@ -166,6 +166,19 @@ La interfaz utiliza:
 - Carrusel promocional con imágenes de videojuegos.
 - Estilos visuales personalizados en [`src/assets/styles.css`](./src/assets/styles.css).
 
+### Diseño responsive
+
+La aplicación se adapta a distintos tamaños de pantalla utilizando el sistema responsive de Bootstrap 5 y reglas CSS específicas:
+
+- La barra de navegación se colapsa en pantallas pequeñas mediante `navbar-expand-lg`.
+- El catálogo utiliza `col-12 col-md-6 col-lg-4`, mostrando una tarjeta por fila en móvil, dos en pantallas medianas y tres en escritorio.
+- El buscador, el botón y el filtro de categoría utilizan `col-12` para apilarse en móvil y columnas responsive desde `md`.
+- El carrusel utiliza una altura adaptable mediante `clamp()` para evitar que ocupe demasiado espacio en teléfonos.
+- Las imágenes de las tarjetas mantienen una altura controlada y `object-fit: contain` para mostrar las portadas completas.
+- El carrito permite que los nombres largos se ajusten y que el botón `Quitar` conserve su espacio.
+- El formulario y los paneles reducen su padding en pantallas pequeñas.
+- Se utilizan clases como `flex-wrap`, `flex-grow-1`, `w-100` y `text-nowrap` para evitar cortes y desbordamientos.
+
 ## Tecnologías utilizadas
 
 - React 18.

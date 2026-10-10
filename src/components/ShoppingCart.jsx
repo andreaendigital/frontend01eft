@@ -94,14 +94,14 @@ function ShoppingCart({
         className="cart-section mt-5"
         aria-labelledby="cart-title"
       >
-        <div className="d-flex justify-content-between align-items-center gap-3 flex-wrap">
-          <div>
+        <div className="d-flex justify-content-between align-items-start gap-3 flex-wrap">
+          <div className="flex-grow-1">
             <p className="eyebrow mb-2">Compra rápida</p>
             <h2 id="cart-title" className="h3 mb-1">
               Tu carrito
             </h2>
           </div>
-          <span id="cartSummary" className="text-secondary">
+          <span id="cartSummary" className="text-secondary text-nowrap">
             {cart.length} producto{cart.length === 1 ? "" : "s"}
           </span>
         </div>
@@ -111,10 +111,10 @@ function ShoppingCart({
           ) : (
             cart.map((product) => (
               <div
-                className="cart-item d-flex justify-content-between align-items-center gap-3 py-2"
+                className="cart-item d-flex justify-content-between align-items-center gap-3 py-2 flex-wrap"
                 key={product.uniqueId}
               >
-                <div>
+                <div className="flex-grow-1 min-width-0">
                   <strong>{product.name}</strong>
                   <small className="d-block text-secondary">
                     {product.price === null
