@@ -1,0 +1,36 @@
+# Dependencias instaladas
+node_modules/
+
+# Salidas de Vite y cachés de herramientas
+dist/
+.vite/
+coverage/
+
+# Variables de entorno y secretos locales
+.env
+.env.*
+!.env.example
+
+# Registros y archivos temporales
+*.log
+*.tmp
+*.temp
+*.swp
+*.swo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Configuración local de editores e IDE
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates

@@ -1,0 +1,9 @@
+@import "./assets/styles.css";
+
+#root {
+  min-height: 100vh;
+}
+
+.product-price {
+  color: var(--arcade-highlight);
+}

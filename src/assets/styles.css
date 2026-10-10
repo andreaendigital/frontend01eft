@@ -1,0 +1,323 @@
+/* Variables visuales de Pixel Arcade */
+:root {
+  --bg-gradient-top: #0a0e17;
+  --bg-gradient-mid: #1b1035;
+  --bg-gradient-bottom: #08070d;
+  --color-primary: #120d24;
+  --color-nav-bg: #0b0718;
+  --color-surface-card: #16192b;
+  --color-surface-input: #0d111a;
+  --color-border: #2e344e;
+  --color-text: #f3f4f6;
+  --color-text-muted: #c4cad4;
+  --arcade-ink: #101827;
+  --arcade-surface: #ffffff;
+  --arcade-muted: #526173;
+  --arcade-accent: #6f42c1;
+  --arcade-accent-dark: #4b278a;
+  --arcade-highlight: #f4c95d;
+}
+
+/* Base y accesibilidad visual */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--color-text);
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.85) 0%,
+      rgba(0, 0, 0, 0.4) 80px,
+      transparent 220px
+    ),
+    linear-gradient(
+      135deg,
+      var(--bg-gradient-top) 0%,
+      var(--bg-gradient-mid) 50%,
+      var(--bg-gradient-bottom) 100%
+    );
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.arcade-navbar {
+  background: linear-gradient(
+    110deg,
+    var(--color-primary),
+    var(--color-nav-bg)
+  );
+  border-bottom: 1px solid var(--color-border);
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.arcade-navbar .container {
+  padding-right: 27px;
+  padding-left: 27px;
+}
+
+.arcade-navbar .navbar-brand,
+.arcade-navbar .nav-link {
+  color: #ffffff;
+}
+
+.arcade-navbar .nav-link:hover,
+.arcade-navbar .nav-link:focus-visible,
+.arcade-navbar .nav-link.active {
+  color: var(--arcade-highlight);
+}
+
+.arcade-navbar .navbar-toggler:focus {
+  box-shadow: 0 0 0 0.25rem rgba(244, 201, 93, 0.45);
+}
+
+/* Altura uniforme y recorte responsivo para las imágenes del carrusel */
+.carousel-image {
+  height: 420px;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.62);
+}
+
+.carousel-caption {
+  right: 10%;
+  left: 10%;
+  bottom: 12%;
+  max-width: 680px;
+  padding: 1.25rem;
+  border-left: 4px solid var(--arcade-highlight);
+  background: linear-gradient(
+    90deg,
+    rgba(16, 24, 39, 0.88),
+    rgba(16, 24, 39, 0.15)
+  );
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.75);
+}
+
+.carousel-caption h1,
+.carousel-caption h2 {
+  font-weight: 700;
+}
+
+.carousel-caption p {
+  margin-bottom: 0;
+  color: #ffffff;
+}
+
+.eyebrow {
+  color: var(--arcade-highlight);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.product-card {
+  color: var(--color-text);
+  background-color: var(--color-surface-card);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--arcade-accent);
+  box-shadow: 0 12px 24px rgba(157, 78, 221, 0.2);
+}
+
+.product-card .card-img-top {
+  height: 220px;
+  object-fit: cover;
+}
+
+.product-card .card-title {
+  color: #ffffff;
+}
+
+.product-card .card-text,
+.contact-section p {
+  color: var(--color-text-muted) !important;
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--arcade-accent);
+  --bs-btn-border-color: var(--arcade-accent);
+  --bs-btn-hover-bg: var(--arcade-accent-dark);
+  --bs-btn-hover-border-color: var(--arcade-accent-dark);
+  --bs-btn-active-bg: var(--arcade-accent-dark);
+  --bs-btn-active-border-color: var(--arcade-accent-dark);
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    rgba(157, 78, 221, 0.65) 0%,
+    rgba(114, 9, 183, 0.45) 100%
+  );
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-top-color: rgba(255, 255, 255, 0.45);
+  border-radius: 10px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+    0 5px 0 #5a189a,
+    0 10px 20px rgba(157, 78, 221, 0.35);
+  position: relative;
+  top: 0;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(157, 78, 221, 0.8) 0%,
+    rgba(114, 9, 183, 0.6) 100%
+  );
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+    0 6px 0 #5a189a,
+    0 14px 28px rgba(157, 78, 221, 0.5);
+  top: -2px;
+}
+
+.btn-primary:active {
+  top: 4px;
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.5),
+    0 1px 0 #5a189a,
+    0 4px 10px rgba(157, 78, 221, 0.3);
+}
+
+.btn-primary:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.8),
+    0 0 0 6px var(--arcade-highlight),
+    0 5px 0 #5a189a;
+}
+
+.arcade-footer {
+  background: linear-gradient(
+    135deg,
+    var(--bg-gradient-mid) 0%,
+    var(--color-primary) 55%,
+    var(--bg-gradient-bottom) 100%
+  ) !important;
+  border-top: 2px solid var(--arcade-accent);
+}
+
+.contact-section {
+  max-width: 600px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 2rem;
+  color: var(--color-text);
+  background-color: var(--color-surface-card);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.contact-form .form-control,
+.contact-form .form-select {
+  color: #ffffff;
+  background-color: var(--color-surface-input);
+  border-color: var(--color-border);
+}
+
+.contact-form .form-control::placeholder {
+  color: #9ca3af;
+}
+
+.contact-form .form-control:focus,
+.contact-form .form-select:focus {
+  color: #ffffff;
+  background-color: var(--color-surface-input);
+  border-color: var(--arcade-highlight);
+  box-shadow: 0 0 0 0.25rem rgba(244, 201, 93, 0.25);
+}
+
+.contact-form .form-select {
+  color-scheme: dark;
+}
+
+.products-status {
+  min-height: 1.5rem;
+  font-weight: 600;
+}
+
+.cart-section {
+  padding: 1.5rem;
+  color: var(--color-text);
+  background: rgba(22, 25, 43, 0.8);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.cart-item {
+  border-bottom: 1px solid rgba(196, 202, 212, 0.2);
+}
+
+.product-price {
+  color: var(--arcade-highlight);
+}
+
+/* Adaptación del carrusel y captions para pantallas pequeñas */
+@media (max-width: 767.98px) {
+  .carousel-image {
+    height: 360px;
+  }
+
+  .carousel-caption {
+    right: 7%;
+    bottom: 8%;
+    left: 7%;
+    padding: 0.9rem;
+  }
+
+  .carousel-caption h1,
+  .carousel-caption h2 {
+    font-size: 1.45rem;
+  }
+
+  .carousel-caption p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .product-card {
+    transition: none;
+  }
+}
