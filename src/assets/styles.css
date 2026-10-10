@@ -269,6 +269,34 @@ body {
   color-scheme: dark;
 }
 
+.contact-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.contact-form .form-group label {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.contact-form .invalid-feedback {
+  color: #ffb3b3;
+}
+
+.form-feedback {
+  margin: 1rem 0 0;
+  font-weight: 600;
+}
+
+.form-feedback-success {
+  color: #8ff0b0;
+}
+
+.form-feedback-error {
+  color: #ffb3b3;
+}
+
 .products-status {
   min-height: 1.5rem;
   font-weight: 600;

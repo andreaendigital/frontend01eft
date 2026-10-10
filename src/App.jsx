@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ShoppingCart from "./components/ShoppingCart";
 import Counter from "./components/Counter";
+import ContactForm from "./components/ContactForm";
 import { products as catalog } from "./assets/products";
 import "./App.css";
 
@@ -129,31 +130,7 @@ function App() {
             Visítanos en Santiago o escríbenos para recibir orientación sobre tu
             próximo setup.
           </p>
-          <form
-            className="contact-form text-start"
-            onSubmit={(event) => event.preventDefault()}
-          >
-            <label htmlFor="nombre">Nombre completo</label>
-            <input
-              id="nombre"
-              className="form-control"
-              placeholder="Ej. Juan Pérez"
-              required
-            />
-            <label htmlFor="email">Correo electrónico</label>
-            <input
-              id="email"
-              className="form-control"
-              type="email"
-              placeholder="nombre@correo.com"
-              required
-            />
-            <label htmlFor="mensaje">Mensaje</label>
-            <textarea id="mensaje" className="form-control" rows="4" required />
-            <button type="submit" className="btn btn-primary w-100">
-              Enviar mensaje
-            </button>
-          </form>
+          <ContactForm />
         </section>
       </main>
 
