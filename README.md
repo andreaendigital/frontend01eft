@@ -1,283 +1,285 @@
-# Pixel Arcade - Semana 8
+# Pixel Arcade
 
-## Evolución del proyecto
+## Presentación del proyecto
 
-Durante la semana 8, Pixel Arcade continúa la evolución iniciada en la semana 7 con una aplicación React organizada con Vite. El objetivo de esta actividad es optimizar los componentes usando `useState`, `useEffect` y renderizado condicional.
+Pixel Arcade es una tienda web de videojuegos desarrollada como resultado de la evolución del trabajo realizado durante el bimestre. El proyecto comenzó como una interfaz de productos y fue incorporando progresivamente nuevos recursos de desarrollo frontend con React, hasta convertirse en un catálogo interactivo con filtros, carrito de compras y formulario de contacto.
 
-La interfaz visual se conserva con Bootstrap 5.3 y los estilos personalizados de Pixel Arcade. Las mejoras se concentran en la gestión de datos, estados internos y comportamiento interactivo.
+Durante el bimestre se trabajó con:
 
-## Objetivos implementados
+- Componentes reutilizables en React.
+- Props para comunicar información y eventos entre componentes.
+- `useState` para administrar estados de la interfaz.
+- `useEffect` para trabajar con efectos de la aplicación.
+- Renderizado dinámico de productos mediante `.map()`.
+- Renderizado condicional para estados vacíos, resultados de búsqueda y mensajes.
+- Filtrado de productos por categoría.
+- Búsqueda de videojuegos por nombre y descripción.
+- Validaciones personalizadas de formularios.
+- Manejo de mensajes de error, envío y confirmación.
+- Diseño responsive con Bootstrap 5.
+- Maquetación semántica con HTML5.
+- Estilos personalizados con CSS y uso de Flexbox.
+- Organización modular de una aplicación React con Vite.
 
-- Cargar dinámicamente el catálogo desde un archivo JSON local.
-- Administrar la lista de productos con estado React.
-- Administrar los productos seleccionados en el carrito.
-- Mostrar un contador con el total de productos agregados.
-- Agregar y eliminar productos del carrito.
-- Mostrar un mensaje cuando el carrito está vacío.
-- Cambiar el texto del botón a `En el carrito` después de agregar un producto.
-- Mantener todos los botones con el estilo morado `btn-primary`.
-- Mostrar estados de carga, éxito y error del catálogo.
+El formulario de contacto utiliza actualmente un envío simulado para demostrar el flujo de validación y confirmación. No envía datos a un correo ni requiere un backend.
 
-## Estructura de la semana 8
+## Funcionalidades
 
-```text
-sem08/
-├── index.html
-├── package.json
-├── package-lock.json
-├── vite.config.js
-├── public/
-│   └── products.json
-└── src/
-    ├── App.css
-    ├── App.jsx
-    ├── index.css
-    ├── main.jsx
-    ├── assets/
-    │   ├── styles.css
-    │   └── img/
-    │       ├── busqueda.png
-    │       ├── carritovacio.png
-    │       └── enelcarrito.png
-    └── components/
-        ├── CartTotal.jsx
-        ├── Counter.jsx
-        ├── ProductList.jsx
-        ├── ShoppingCart.jsx
-        └── UserStatus.jsx
-```
+### Catálogo de videojuegos
 
-La carpeta `public/` contiene `products.json`. Vite copia su contenido directamente al resultado final, por lo que puede ser solicitado mediante `fetch()`.
+El catálogo contiene nueve videojuegos distribuidos en tres categorías:
 
-## Gestión de estados con `useState`
+- PlayStation 5.
+- Xbox 360.
+- Switch 2.
 
-En `App.jsx`, la lista comienza vacía y se actualiza cuando finaliza la carga del JSON:
+Cada tarjeta de producto presenta:
 
-```jsx
-const [products, setProducts] = useState([]);
-const [loadingProducts, setLoadingProducts] = useState(true);
-const [productsError, setProductsError] = useState(false);
-```
+- Imagen.
+- Nombre.
+- Categoría.
+- Descripción.
+- Precio.
+- Botón para agregar al carrito.
 
-En `ShoppingCart.jsx`, el carrito y la búsqueda se mantienen como estados internos:
+Los datos se encuentran en [`src/assets/products.js`](./src/assets/products.js) y las imágenes se almacenan en [`src/assets/img/`](./src/assets/img/).
 
-```jsx
-const [cart, setCart] = useState([]);
-const [searchTerm, setSearchTerm] = useState("");
-```
+### Filtro y búsqueda
 
-Cada producto agregado recibe un `uniqueId`, lo que permite agregar varias unidades y eliminar una entrada específica:
+La aplicación incluye:
 
-```jsx
-const addToCart = (product) => {
-  const uniqueId = `${product.id}-${Date.now()}-${Math.random()}`;
-  const nextCart = [...cart, { ...product, uniqueId }];
-  setCart(nextCart);
-  onCountChange(nextCart.length);
-};
-```
+- Menú desplegable para filtrar por categoría.
+- Opción para mostrar todas las categorías.
+- Búsqueda por nombre o descripción.
+- Combinación del filtro por categoría con la búsqueda textual.
+- Mensaje cuando no existen coincidencias.
 
-La eliminación utiliza `filter()`:
+### Carrito de compras
 
-```jsx
-const removeFromCart = (uniqueId) => {
-  const nextCart = cart.filter((product) => product.uniqueId !== uniqueId);
-  setCart(nextCart);
-  onCountChange(nextCart.length);
-};
-```
+El carrito permite:
 
-## Manejo de efectos con `useEffect`
+- Agregar productos.
+- Agregar varias unidades del mismo videojuego.
+- Mostrar la cantidad total en la barra de navegación.
+- Eliminar productos individualmente.
+- Mostrar un mensaje cuando está vacío.
+- Calcular el total acumulado.
+- Mostrar `Precio no disponible` si en el futuro se agrega un producto sin valor.
 
-`App.jsx` utiliza `useEffect` para simular la carga de datos desde una fuente externa local:
+### Formulario de contacto
 
-```jsx
-useEffect(() => {
-  fetch(`${import.meta.env.BASE_URL}products.json`)
-    .then((response) => {
-      if (!response.ok) throw new Error(`Error ${response.status}`);
-      return response.json();
-    })
-    .then((data) => setProducts(data))
-    .catch((error) => {
-      setProductsError(true);
-      console.error("No se pudo cargar el catálogo", error);
-    })
-    .finally(() => setLoadingProducts(false));
-}, []);
-```
+El formulario está implementado como un componente reutilizable en [`src/components/ContactForm.jsx`](./src/components/ContactForm.jsx).
 
-El arreglo vacío `[]` indica que el efecto se ejecuta al montar el componente. Al finalizar, la interfaz deja de mostrar la carga y presenta los productos o el mensaje de error.
+Incluye:
 
-## Estados visibles del catálogo
+- Estado React para nombre, correo y mensaje.
+- Validación de nombre obligatorio.
+- Validación de longitud del nombre entre 2 y 80 caracteres.
+- Validación de caracteres permitidos en el nombre.
+- Validación del formato del correo electrónico.
+- Validación de mensaje entre 10 y 500 caracteres.
+- Mensajes específicos debajo de cada campo.
+- Indicadores visuales de campos inválidos.
+- Estado de envío.
+- Mensaje de confirmación exitoso.
+- Mensaje de error cuando la validación no es correcta.
+- Envío simulado sin backend.
 
-`UserStatus.jsx` presenta un mensaje distinto según el estado:
+El uso de `event.preventDefault()` permite que React controle la validación y la simulación del envío sin recargar la página.
 
-```jsx
-function UserStatus({ loading, error, count }) {
-  if (loading) return <p>Cargando productos...</p>;
-  if (error) return <p>No fue posible cargar los productos.</p>;
-  return <p>{count} productos cargados correctamente.</p>;
-}
-```
+## Evidencias de funcionalidades
 
-El componente se utiliza desde `ShoppingCart.jsx`:
+Las siguientes capturas muestran las validaciones y estados principales del formulario:
 
-```jsx
-<UserStatus
-  count={products.length}
-  loading={loadingProducts}
-  error={productsError}
-/>
-```
+### Validación de campos
 
-## Renderizado condicional
+![Validación de campos del formulario](./src/assets/img/formulariovalidacioncampos.png)
 
-### Catálogo sin resultados
+La imagen evidencia los indicadores visuales de campos inválidos y los mensajes específicos para:
 
-`ProductList.jsx` filtra el catálogo con el texto de búsqueda. Si no existen coincidencias, muestra un mensaje alternativo:
+- Nombre obligatorio.
+- Longitud del nombre entre 2 y 80 caracteres.
+- Caracteres permitidos en el nombre.
+- Formato válido del correo electrónico.
+- Mensaje entre 10 y 500 caracteres.
 
-```jsx
-if (filteredProducts.length === 0) {
-  return (
-    <p className="text-warning">No encontramos productos con esa búsqueda.</p>
-  );
-}
-```
+### Mensajes específicos de validación
 
-Cuando existen productos, se utiliza `.map()`:
+![Mensajes específicos de validación](./src/assets/img/formulariovalidacionmensaje.png)
 
-```jsx
-{
-  filteredProducts.map((product) => (
-    <article key={product.id} className="card product-card">
-      <h3>{product.name}</h3>
-    </article>
-  ));
-}
-```
+Cada campo muestra una explicación particular del error, en lugar de un mensaje genérico.
 
-### Botón `Agregar al carrito` / `En el carrito`
+### Confirmación del envío simulado
 
-Cada tarjeta comprueba si su producto está incluido en el estado `cart`:
+![Mensaje de confirmación del formulario](./src/assets/img/formulariomensajeconfirmacion.png)
 
-```jsx
-{
-  cart.some((item) => item.id === product.id)
-    ? "En el carrito"
-    : "Agregar al carrito";
-}
-```
+La confirmación se muestra después de completar correctamente el formulario. El envío es simulado y no transmite información a un servidor o correo electrónico.
 
-El botón siempre mantiene el estilo morado:
+### Búsqueda sin coincidencias
 
-```jsx
-<button
-  type="button"
-  className="btn btn-primary mt-auto"
-  onClick={() => onAddToCart(product)}
->
-  {cart.some((item) => item.id === product.id)
-    ? "En el carrito"
-    : "Agregar al carrito"}
-</button>
-```
+![Mensaje de productos sin coincidencias](./src/assets/img/mensajenocoincidencias.png)
 
-El cambio afecta únicamente al texto. No se cambia a `btn-secondary`, por lo que todos los botones mantienen la apariencia visual original.
+Cuando la búsqueda o el filtro por categoría no encuentra videojuegos, la aplicación informa al usuario que no existen productos coincidentes.
 
-### Carrito vacío
+### Diseño y maquetación
 
-`ShoppingCart.jsx` muestra un mensaje cuando no hay productos y las entradas cuando existen:
+La interfaz utiliza:
 
-```jsx
-{
-  cart.length === 0 ? (
-    <p className="text-secondary mb-0">Tu carrito está vacío.</p>
-  ) : (
-    cart.map((product) => (
-      <div key={product.uniqueId} className="cart-item">
-        <strong>{product.name}</strong>
-        <button onClick={() => removeFromCart(product.uniqueId)}>Quitar</button>
-      </div>
-    ))
-  );
-}
-```
+- Etiquetas semánticas HTML5: `header`, `nav`, `main`, `section`, `article`, `aside` y `footer`.
+- Bootstrap 5 para la navegación, tarjetas, formulario, botones, badges y diseño responsive.
+- Flexbox mediante clases de Bootstrap y reglas CSS personalizadas.
+- Carrusel promocional con imágenes de videojuegos.
+- Estilos visuales personalizados en [`src/assets/styles.css`](./src/assets/styles.css).
 
-## Contador y total
+## Tecnologías utilizadas
 
-El contador se actualiza desde `ShoppingCart` mediante `onCountChange` y se muestra en la navegación con `Counter`:
+- React 18.
+- Vite.
+- Bootstrap 5.
+- JavaScript.
+- HTML5.
+- CSS3.
+- npm.
 
-```jsx
-<Counter count={cartCount} />
-```
+## Requisitos previos
 
-El total del carrito se calcula en `CartTotal.jsx` con `reduce()`:
+Antes de ejecutar el proyecto se necesita tener instalado:
 
-```jsx
-const total = cart.reduce((sum, product) => sum + product.offerPrice, 0);
-```
+1. **Node.js**, preferentemente una versión LTS.
+2. **npm**, que se instala normalmente junto con Node.js.
+3. Un navegador web actualizado.
 
-## Ejecutar el proyecto
-
-Los comandos deben ejecutarse desde la carpeta `sem08`, donde se encuentra `package.json`:
+Para comprobar las versiones instaladas:
 
 ```bash
-cd sem08
-npm install
-npm run dev -- --host 127.0.0.1 --port 5174
+node --version
+npm --version
 ```
 
-Con esta configuración, la aplicación se abre en:
+Si alguno de esos comandos no funciona, instala Node.js desde:
+
+<https://nodejs.org/>
+
+## Instalación y ejecución local
+
+### 1. Clonar o descargar el proyecto
+
+Ubica el proyecto en una carpeta local. Luego abre una terminal en la carpeta raíz, donde se encuentran `package.json` y `vite.config.js`.
+
+En Windows, por ejemplo:
+
+```powershell
+cd "C:\ruta\al\proyecto\sem09ETF"
+```
+
+### 2. Instalar las dependencias
+
+Ejecuta:
+
+```bash
+npm install
+```
+
+Este comando lee `package.json` y descarga las dependencias necesarias en la carpeta `node_modules`.
+
+### 3. Ejecutar en modo desarrollo
+
+Inicia el servidor local con:
+
+```bash
+npm run dev
+```
+
+Vite mostrará una dirección similar a:
 
 ```text
-http://127.0.0.1:5174/frontend01/sem08/
+http://localhost:5173/
 ```
 
-Si el puerto `5174` está ocupado, Vite puede iniciar en otro puerto. En ese caso se debe abrir la URL que aparece en la terminal, conservando la ruta `/frontend01/sem08/`.
+Abre esa dirección en el navegador. También puedes pedir que Vite abra el navegador automáticamente:
 
-Para crear la compilación de producción:
+```bash
+npm run dev -- --open
+```
+
+Para detener el servidor de desarrollo, presiona `Ctrl + C` en la terminal.
+
+## Generar la versión de producción
+
+Para crear una compilación optimizada, ejecuta:
 
 ```bash
 npm run build
 ```
 
-Para previsualizar la compilación:
+El resultado se genera en la carpeta `dist/`. Esta carpeta es una salida de compilación y no debe subirse al repositorio.
+
+## Visualizar la compilación de producción
+
+Después de ejecutar `npm run build`, inicia el servidor de previsualización:
 
 ```bash
 npm run preview
 ```
 
-## Evidencias de funcionamiento
+Vite mostrará una dirección local, normalmente:
 
-Las siguientes capturas muestran las funcionalidades implementadas durante la semana 8.
+```text
+http://localhost:4173/
+```
 
-### Búsqueda de productos
+Abre esa dirección en el navegador para revisar la versión compilada.
 
-![Búsqueda de productos por nombre o descripción](src/assets/img/busqueda.png)
+## Estructura principal
 
-La captura muestra la búsqueda del término `consola`. El catálogo filtra los productos y presenta únicamente `Consola Retro Classic`, manteniendo sus precios y el botón morado `Agregar al carrito`.
+```text
+sem09ETF/
+├── index.html
+├── package.json
+├── package-lock.json
+├── vite.config.js
+├── src/
+│   ├── App.jsx
+│   ├── App.css
+│   ├── index.css
+│   ├── assets/
+│   │   ├── products.js
+│   │   ├── styles.css
+│   │   └── img/
+│   │       ├── formulariovalidacioncampos.png
+│   │       ├── formulariovalidacionmensaje.png
+│   │       ├── formulariomensajeconfirmacion.png
+│   │       ├── mensajenocoincidencias.png
+│   │       └── ... imágenes del catálogo
+│   └── components/
+│       ├── CartTotal.jsx
+│       ├── ContactForm.jsx
+│       ├── Counter.jsx
+│       ├── ProductList.jsx
+│       ├── ShoppingCart.jsx
+│       └── UserStatus.jsx
+└── .gitignore
+```
 
-### Producto agregado al carrito
+## Scripts disponibles
 
-![Botón En el carrito](src/assets/img/enelcarrito.png)
+| Comando | Descripción |
+| --- | --- |
+| `npm install` | Instala las dependencias del proyecto. |
+| `npm run dev` | Inicia el servidor de desarrollo de Vite. |
+| `npm run build` | Genera la versión optimizada para producción. |
+| `npm run preview` | Previsualiza localmente la compilación de producción. |
 
-La captura muestra productos en el catálogo después de una interacción. El botón del `Setup Battlestation Complete` cambió de `Agregar al carrito` a `En el carrito`, mientras el botón del mouse aún permanece disponible. Ambos conservan el estilo morado `btn-primary`.
+## Estado del proyecto
 
-### Carrito vacío
+El proyecto está preparado para ejecutarse localmente y demostrar:
 
-![Carrito vacío](src/assets/img/carritovacio.png)
+- Catálogo dinámico de videojuegos.
+- Filtrado por categoría.
+- Búsqueda de productos.
+- Carrito de compras.
+- Cálculo del total.
+- Formulario validado con React.
+- Envío simulado con confirmación visual.
 
-La captura muestra el renderizado condicional del carrito vacío: aparece el mensaje `Tu carrito está vacío`, el contador indica `0 productos` y el total acumulado muestra `$0`.
-
-## Tecnologías
-
-| Tecnología    | Uso                                               |
-| ------------- | ------------------------------------------------- |
-| React         | Componentes y renderizado declarativo             |
-| Vite          | Servidor de desarrollo y compilación              |
-| `useState`    | Estado del catálogo, búsqueda, carrito y contador |
-| `useEffect`   | Carga simulada de productos desde JSON            |
-| JSX           | Estructura de los componentes                     |
-| Bootstrap 5.3 | Grid, cards, navbar y botones                     |
-| JavaScript    | `.map()`, `.filter()`, `.some()` y `.reduce()`    |
+El formulario no realiza envíos reales. Para conectarlo posteriormente con un correo o un backend, se puede reemplazar la función de simulación de [`ContactForm.jsx`](./src/components/ContactForm.jsx) por una solicitud `fetch()` hacia un servicio externo o una API.
