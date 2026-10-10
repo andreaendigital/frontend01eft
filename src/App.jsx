@@ -69,7 +69,7 @@ function App() {
             <div className="carousel-inner rounded-3 overflow-hidden">
               <div className="carousel-item active">
                 <img
-                  src="https://plus.unsplash.com/premium_photo-1682141878168-5dace8e1785d?w=1200"
+                  src="https://w0.peakpx.com/wallpaper/154/78/HD-wallpaper-plants-vs-zombies-garden-warfare.jpg"
                   className="d-block w-100 carousel-image"
                   alt="Setup gamer completo"
                 />
@@ -83,7 +83,7 @@ function App() {
               </div>
               <div className="carousel-item">
                 <img
-                  src="https://images.unsplash.com/photo-1600861194942-f883de0dfe96?w=1200"
+                  src="https://m.media-amazon.com/images/S/stores-image-uploads-fe-prod/d/AmazonStores/A39IBJ37TRP1C6/60fe6d7eb4f67f5b495d77e9ce5ade9b.w3000.h600._CR0%2C0%2C3000%2C600_SX1500_.jpg"
                   className="d-block w-100 carousel-image"
                   alt="Persona jugando"
                 />
@@ -92,6 +92,19 @@ function App() {
                   <p>
                     Componentes y periféricos seleccionados para jugar con
                     comodidad y precisión.
+                  </p>
+                </div>
+              </div>
+              <div className="carousel-item">
+                <img
+                  src="https://image.api.playstation.com/vulcan/ap/rnd/202407/0200/aac40cfde55b67abf081d5d9ebcc5e3e08aaa65a4c99424e.jpg"
+                  className="d-block w-100 carousel-image"
+                  alt="Videojuegos de PlayStation 5"
+                />
+                <div className="carousel-caption text-start">
+                  <h2>Una aventura para cada jugador</h2>
+                  <p>
+                    Descubre nuevos mundos y disfruta tus videojuegos favoritos.
                   </p>
                 </div>
               </div>
