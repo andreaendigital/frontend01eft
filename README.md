@@ -141,6 +141,21 @@ Cuando la búsqueda o el filtro por categoría no encuentra videojuegos, la apli
 
 La imagen muestra el menú desplegable utilizado para filtrar los videojuegos por plataforma.
 
+### Cambio del botón al agregar un producto
+
+![Producto agregado al carrito](./src/assets/img/enelcarritocambioboton.png)
+
+La imagen evidencia que, después de agregar un videojuego al carrito, el texto del botón cambia de `Agregar al carrito` a `En el carrito`.
+
+### Navegación entre secciones
+
+La barra de navegación permite desplazarse entre las secciones principales mediante enlaces internos:
+
+- `Inicio` → sección principal.
+- `Productos` → catálogo de videojuegos.
+- `Carrito` → productos agregados y total.
+- `Contacto` → formulario de contacto.
+
 ### Diseño y maquetación
 
 La interfaz utiliza:
