@@ -72,29 +72,15 @@ function App() {
                 <img
                   src="https://w0.peakpx.com/wallpaper/154/78/HD-wallpaper-plants-vs-zombies-garden-warfare.jpg"
                   className="d-block w-100 carousel-image"
-                  alt="Setup gamer completo"
+                  alt="Plants vs. Zombies: Garden Warfare"
                 />
-                <div className="carousel-caption text-start">
-                  <h1 id="hero-title">Tu próximo nivel comienza aquí</h1>
-                  <p>
-                    Encuentra tecnología, accesorios y experiencias para mejorar
-                    tu forma de jugar.
-                  </p>
-                </div>
               </div>
               <div className="carousel-item">
                 <img
-                  src="https://m.media-amazon.com/images/S/stores-image-uploads-fe-prod/d/AmazonStores/A39IBJ37TRP1C6/60fe6d7eb4f67f5b495d77e9ce5ade9b.w3000.h600._CR0%2C0%2C3000%2C600_SX1500_.jpg"
+                  src="https://cdn-image-f3580964b8e711e5b95f2ff191a1c838.baas.nintendo.com/1/53dca67ca19602ce"
                   className="d-block w-100 carousel-image"
-                  alt="Persona jugando"
+                  alt="Videojuegos de Nintendo"
                 />
-                <div className="carousel-caption text-start">
-                  <h2>Potencia para cada partida</h2>
-                  <p>
-                    Componentes y periféricos seleccionados para jugar con
-                    comodidad y precisión.
-                  </p>
-                </div>
               </div>
               <div className="carousel-item">
                 <img
@@ -102,12 +88,6 @@ function App() {
                   className="d-block w-100 carousel-image"
                   alt="Videojuegos de PlayStation 5"
                 />
-                <div className="carousel-caption text-start">
-                  <h2>Una aventura para cada jugador</h2>
-                  <p>
-                    Descubre nuevos mundos y disfruta tus videojuegos favoritos.
-                  </p>
-                </div>
               </div>
             </div>
           </div>
